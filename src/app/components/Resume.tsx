@@ -1,285 +1,154 @@
+"use client";
+
 import { FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const projects = [
+  {
+    title: "Weather App",
+    image: "/project1.jpg",
+    desc: "Modern weather application built using React and API integration.",
+  },
+  {
+    title: "Portfolio Website",
+    image: "/project2.jpg",
+    desc: "Personal portfolio website built using Next.js and Tailwind CSS.",
+  },
+  {
+    title: "Business Website",
+    image: "/project3.jpg",
+    desc: "Responsive business website with clean and modern UI.",
+  },
+  {
+    title: "E-Commerce UI",
+    image: "/project4.jpg",
+    desc: "Stylish ecommerce frontend design with responsive layout.",
+  },
+  {
+    title: "Admin Dashboard",
+    image: "/project5.jpg",
+    desc: "Secure admin panel with authentication and modern dashboard UI.",
+  },
+  {
+    title: "Restaurant Website",
+    image: "/project6.jpg",
+    desc: "Elegant restaurant website with beautiful modern sections.",
+  },
+];
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardAnimation = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
+};
 
 const MyWork = () => {
   return (
+<section className="bg-black text-white pt-10 pb-24 px-8 overflow-hidden">      <div className="max-w-7xl mx-auto">
 
-    <div className="bg-black text-white py-24 px-8">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <p className="text-red-500 font-semibold mb-3 tracking-wider uppercase">
+            ▸ My Projects
+          </p>
 
-      <div className="max-w-7xl mx-auto">
+          <h1 className="text-5xl md:text-6xl font-bold">
+            What I Built
+          </h1>
+        </motion.div>
 
-      {/* Heading */}
-      <div className="mb-16">
+        {/* Cards */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              variants={cardAnimation}
+              whileHover={{
+                y: -12,
+                scale: 1.03,
+              }}
+              className="group bg-zinc-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-zinc-800 hover:border-red-500/40 transition-all duration-500 shadow-lg hover:shadow-red-500/10"
+            >
 
-        <p className="text-red-500 font-semibold mb-3">
-          ▸ My Projects
-        </p>
+              {/* Image */}
+              <div className="overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
 
-        <h1 className="text-5xl font-bold">
-          What I Built
-        </h1>
+              {/* Content */}
+              <div className="p-6">
 
-      </div>
+                <h2 className="text-2xl font-bold mb-3 group-hover:text-red-400 transition-colors duration-300">
+                  {project.title}
+                </h2>
 
-      {/* Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <p className="text-zinc-400 mb-5 leading-7">
+                  {project.desc}
+                </p>
 
-        {/* Card 1 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project1.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
+                {/* Buttons */}
+                <div className="flex gap-4">
 
-          <div className="p-6">
+                  <a
+                    href="https://your-project-link.vercel.app"
+                    target="_blank"
+                    className="bg-red-500 hover:bg-red-600 hover:scale-105 px-5 py-2 rounded-lg font-semibold transition-all duration-300"
+                  >
+                    Live Demo
+                  </a>
 
-            <h2 className="text-2xl font-bold mb-3">
-              Weather App
-            </h2>
+                  <a
+                    href="https://github.com/"
+                    target="_blank"
+                    className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 hover:border-red-500 transition-all duration-300 flex items-center gap-2"
+                  >
+                    <FaGithub />
+                    GitHub
+                  </a>
 
-            <p className="text-zinc-400 mb-5 leading-7">
-              Modern weather application built using React and API integration.
-            </p>
+                </div>
 
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        {/* Card 2 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project2.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
-
-          <div className="p-6">
-
-            <h2 className="text-2xl font-bold mb-3">
-              Portfolio Website
-            </h2>
-
-            <p className="text-zinc-400 mb-5 leading-7">
-              Personal portfolio website built using Next.js and Tailwind CSS.
-            </p>
-
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project3.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
-
-          <div className="p-6">
-
-            <h2 className="text-2xl font-bold mb-3">
-              Business Website
-            </h2>
-
-            <p className="text-zinc-400 mb-5 leading-7">
-              Responsive business website with clean and modern UI.
-            </p>
-
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        {/* Card 4 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project4.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
-
-          <div className="p-6">
-
-            <h2 className="text-2xl font-bold mb-3">
-              E-Commerce UI
-            </h2>
-
-            <p className="text-zinc-400 mb-5 leading-7">
-              Stylish ecommerce frontend design with responsive layout.
-            </p>
-
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        {/* Card 5 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project5.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
-
-          <div className="p-6">
-
-            <h2 className="text-2xl font-bold mb-3">
-              Admin Dashboard
-            </h2>
-
-            <p className="text-zinc-400 mb-5 leading-7">
-              Secure admin panel with authentication and modern dashboard UI.
-            </p>
-
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
-
-        {/* Card 6 */}
-        <div className="bg-zinc-900 rounded-2xl overflow-hidden hover:scale-105 transition duration-300 shadow-lg">
-          <img
-            src="/project6.jpg"
-            alt="Project"
-            className="w-full h-56 object-cover"
-          />
-
-          <div className="p-6">
-
-            <h2 className="text-2xl font-bold mb-3">
-              Restaurant Website
-            </h2>
-
-            <p className="text-zinc-400 mb-5 leading-7">
-              Elegant restaurant website with beautiful modern sections.
-            </p>
-
-            <div className="flex gap-4">
-
-              <a
-                href="https://your-project-link.vercel.app"
-                target="_blank"
-                className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-lg font-semibold transition"
-              >
-                Live Demo
-              </a>
-
-              <a
-                href="https://github.com/"
-                target="_blank"
-                className="border border-zinc-700 px-5 py-2 rounded-lg hover:bg-zinc-800 transition flex items-center gap-2"
-              >
-                <FaGithub />
-                GitHub
-              </a>
-
-            </div>
-
-          </div>
-        </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
       </div>
-
-      </div>
-
-    </div>
+    </section>
   );
 };
 

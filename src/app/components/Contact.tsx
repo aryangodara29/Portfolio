@@ -1,22 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-black text-white pt-12" // <-- Pt-24 se pt-12 kiya taaki thoda upar khisak jaye
+      className="bg-black text-white pt-4 overflow-hidden relative"
     >
+
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-red-600/10 blur-[140px] rounded-full pointer-events-none"></div>
+
       {/* Main Wrapper */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Contact Box */}
-        <div className="bg-[#050505] border border-zinc-900 rounded-2xl px-6 sm:px-10 md:px-14 py-12 md:py-16 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 shadow-xl shadow-black">
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-[#050505]/80 backdrop-blur-md border border-zinc-900 rounded-3xl px-6 sm:px-10 md:px-14 py-12 md:py-16 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 shadow-2xl shadow-red-950/10 hover:border-red-500/20 transition-all duration-500"
+        >
 
           {/* Left Side */}
-          <div className="max-w-2xl text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="max-w-2xl text-center lg:text-left"
+          >
             <p className="text-red-500 uppercase tracking-[4px] text-xs sm:text-sm font-semibold mb-3">
               Contact Me
             </p>
@@ -31,49 +48,81 @@ const Contact = () => {
               Collaboration is key! Let's combine creativity, clean code, and
               modern design to build something powerful and memorable together.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Side Button */}
-          <div className="w-full lg:w-auto flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="w-full lg:w-auto flex justify-center"
+          >
             <a
               href="mailto:aryanbishnoi2134@gmail.com"
-              className="w-full sm:w-auto text-center bg-red-600 hover:bg-red-700 hover:scale-105 transition-all duration-300 px-10 py-4 rounded-xl font-semibold text-base md:text-lg shadow-lg shadow-red-900/30"
+              className="relative overflow-hidden group w-full sm:w-auto text-center bg-red-600 hover:bg-red-700 px-10 py-4 rounded-xl font-semibold text-base md:text-lg shadow-lg shadow-red-900/30 transition-all duration-500 hover:scale-110"
             >
-              Contact Me
-            </a>
-          </div>
 
-        </div>
+              <span className="relative z-10">
+                Contact Me
+              </span>
+
+              {/* Shine Effect */}
+              <div className="absolute top-0 left-[-100%] w-full h-full bg-white/10 skew-x-12 group-hover:left-[120%] transition-all duration-1000"></div>
+
+            </a>
+          </motion.div>
+
+        </motion.div>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-900 mt-16 md:mt-20">
+      <footer className="border-t border-zinc-900 mt-16 md:mt-20 relative z-10">
         <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          
+
           {/* Left: Name */}
-          <div className="text-center md:text-left">
-            <h1 className="text-xl md:text-2xl font-extrabold tracking-[3px] text-red-500">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center md:text-left"
+          >
+            <h1 className="text-xl md:text-2xl font-extrabold tracking-[3px] text-red-500 hover:text-red-400 transition duration-300">
               ARYAN
             </h1>
-          </div>
+          </motion.div>
 
           {/* Center: Email */}
-          <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
             <a
               href="mailto:aryanbishnoi2134@gmail.com"
               className="text-sm md:text-base text-gray-400 hover:text-red-500 transition duration-300"
             >
               aryanbishnoi2134@gmail.com
             </a>
-          </div>
+          </motion.div>
 
           {/* Right: Social Icons */}
-          <div className="flex items-center gap-6 text-2xl md:text-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-6 text-2xl md:text-3xl"
+          >
+
             {/* Instagram */}
             <Link
               href="https://instagram.com/"
               target="_blank"
-              className="text-gray-400 hover:text-pink-500 transition duration-300 hover:scale-110"
+              className="text-gray-400 hover:text-pink-500 transition-all duration-300 hover:scale-125 hover:-translate-y-1"
             >
               <FaInstagram />
             </Link>
@@ -82,7 +131,7 @@ const Contact = () => {
             <Link
               href="https://linkedin.com/"
               target="_blank"
-              className="text-gray-400 hover:text-blue-500 transition duration-300 hover:scale-110"
+              className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:-translate-y-1"
             >
               <FaLinkedin />
             </Link>
@@ -91,11 +140,12 @@ const Contact = () => {
             <Link
               href="https://github.com/"
               target="_blank"
-              className="text-gray-400 hover:text-white transition duration-300 hover:scale-110"
+              className="text-gray-400 hover:text-white transition-all duration-300 hover:scale-125 hover:-translate-y-1"
             >
               <FaGithub />
             </Link>
-          </div>
+
+          </motion.div>
 
         </div>
       </footer>
