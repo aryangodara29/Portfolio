@@ -10,9 +10,16 @@ import { SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript } from "react-ic
 export default function About() {
   // Framer Motion ke liye simple fade-up animation variants
   const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
+};
 
   const staggerContainer = {
     hidden: { opacity: 0 },
